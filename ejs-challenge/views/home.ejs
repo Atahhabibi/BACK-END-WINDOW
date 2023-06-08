@@ -1,0 +1,15 @@
+<%- include ("partials/header") %>
+
+
+<div class="container-box">
+  <h1>HOME</h1>
+  <p><%= content %> </p>
+
+  <% posts.map(item=>{ %>
+     <h2><%= item.title %> </h2>
+     <h5><%= item.content %> </h5>
+ <%  }) %>
+
+</div>
+
+<%- include ("partials/footer") %>
