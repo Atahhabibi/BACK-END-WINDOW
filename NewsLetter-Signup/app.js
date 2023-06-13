@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: "true" }));
 
-app.listen(3000, (req, res) => {
+app.listen(process.env.PORT || 3000, (req, res) => {
   console.log("SERVER LISTENING ON PORT 3000");
 });
 
@@ -29,10 +29,10 @@ app.post("/", (req, res) => {
         status: "subscribed",
         merge_fields: {
           FNAME: firstName,
-          LNAME: lastName,
-        },
-      },
-    ],
+          LNAME: lastName
+        }
+      }
+    ]
   };
 
   var jsonData = JSON.stringify(data);
@@ -57,7 +57,7 @@ app.post("/", (req, res) => {
 
   client.setConfig({
     apiKey: "41d846a006f7909d5742663be481b5fc-us21",
-    server: "us21",
+    server: "us21"
   });
 
   const run = async () => {
