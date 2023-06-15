@@ -58,8 +58,7 @@ app.get("/", (req, res) => {
         res.redirect("/");
       }
 
-      const newArray = result.map((item) => item.name);
-      res.render("list", { kindOfDay: day, newListItems: newArray });
+      res.render("list", { kindOfDay: day, newListItems: result });
     })
     .catch((err) => {
       console.log(err);
@@ -74,6 +73,16 @@ app.post("/", (req, res) => {
   });
 
   item.save();
+
+  res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+  const id = req.body.id;
+
+  Item.findByIdAndRemove(id).then(()=>{
+    console.log("successfully deleted");
+  }).catch((err)=>{console.log(err);})
 
   res.redirect("/");
 });

@@ -16,7 +16,10 @@
         <% newListItems.map((item,index)=>{ %>
 
         <li>
-          <span><%= index+1%></span><%= item %><button class="delete-btn">delete</button>
+          <span><%= index+1%></span><%= item.name %>
+          <form action="/delete" method="post">
+            <button class="delete-btn" type="submit" name="id" value=<%= item._id %>>delete</button>
+          </form>
         </li>
 
         <% }) %>
@@ -29,6 +32,7 @@
           name="item"
           id="item"
           placeholder="Enter Item Here"
+          autofocus
         />
         <button type="submit">Add</button>
       </form>
