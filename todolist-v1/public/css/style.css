@@ -1,0 +1,82 @@
+body{
+    background:#573407;
+    display: grid;
+    place-items: center;
+    margin-top: 1rem;
+}
+
+.container{
+    padding: 2rem 3rem;
+    padding-bottom:5rem;
+    background:rgb(190, 221, 141);
+    border-radius: 3%;
+    box-shadow: 0px 0px 10px rgb(199, 101, 101);
+}
+
+.container h1{
+    font-size: 3rem;
+    text-align: center;
+    color: #077268;
+    text-transform: uppercase;
+    margin-bottom:2.5rem;
+    border-bottom:3px solid grey;
+}
+
+.container .list{
+
+}
+
+.container .list li{
+    font-size: 2rem;
+    list-style-type:square;
+    margin-top:1rem;
+    display: grid;
+    grid-template-columns:40px 1fr auto;
+    border:1px solid grey;
+    align-items: center;
+    padding: 0.4rem;
+
+}
+
+.container li span{
+    margin-right:0.5rem;
+    color: rgb(61, 24, 10);
+    font-weight: bold;
+
+}
+
+.container form{
+    padding: 1rem;
+}
+
+.container input,button ,label{
+    border:none;
+    outline: none;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.container input{
+    border-radius:4px;
+    background: lightblue;
+    border: 1px solid white;
+}
+
+.container form button{
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.delete-btn{
+    display: inline-block;
+    border: 2px solid rgb(189, 102, 102);
+    font-size:1.5rem;
+    text-transform: capitalize;
+    background:gold;
+    cursor: pointer;
+}
+
+form label{
+    text-transform:uppercase;
+}
