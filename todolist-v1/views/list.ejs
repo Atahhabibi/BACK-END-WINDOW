@@ -18,7 +18,17 @@
         <li>
           <span><%= index+1%></span><%= item.name %>
           <form action="/delete" method="post">
-            <button class="delete-btn" type="submit" name="id" value=<%= item._id %>>delete</button>
+            <input type="hidden" name="listName" value="<%" ="kindOfDay" % />>
+            <button
+              class="delete-btn"
+              type="submit"
+              name="id"
+              value="<%"
+              ="item._id"
+              %
+            >
+              >delete
+            </button>
           </form>
         </li>
 
@@ -34,7 +44,7 @@
           placeholder="Enter Item Here"
           autofocus
         />
-        <button type="submit">Add</button>
+        <button type="submit" value="<%" ="kindOfDay" %>name="list">Add</button>
       </form>
     </div>
   </body>
