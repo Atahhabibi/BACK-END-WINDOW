@@ -1,26 +1,22 @@
-const express=require('express');
+const express = require("express");
+const people=require('./routes/people')
+const auth=require('./routes/auth')
 
-const app=express();
+const app = express();
 
+app.use(express.static("./methods-public"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use('/api/people',people)
+app.use('/login',auth)
 
-app.listen(3000,()=>{
+app.listen(3000, () => {
   console.log("*************SERVER LISTENING PORT: 3000 ************");
-})
+});
 
 
-app.get('/',(req,res)=>{
-  res.status(200).send('<h1>Home Page</h1>')
-})
-
-app.get('/about',(req,res)=>{
-  res.status(200).send('<h1>About Page</h1>')
-})
 
 
-app.get('/about',(req,res)=>{
-  res.status(404).send('<h1>About Page</h1>')
-})
 
-app.all('*',(req,res)=>{
-  res.send('<h1>PAGE NOT FOUND</h1>')
-})
+
+
