@@ -2,24 +2,19 @@ require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
 const app = express();
-const connectDB=require('./db/connect');
+const connectDB = require("./db/connect");
 app.use(express.json());
-
-
-
-
-
+const authenticateUser=require('./middleware/authentication')
 
 const authRouter = require("./routes/auth");
 const jobsRouter = require("./routes/jobs");
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobsRouter);
+app.use("/api/v1/jobs",authenticateUser, jobsRouter);
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-
 
 // extra packages
 
