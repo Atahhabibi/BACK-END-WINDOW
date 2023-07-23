@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
-const { attachCookiesToResponse } = require("../utils");
+const { attachCookiesToResponse,createTokenUser} = require("../utils");
 const CustomError = require("../errors");
 
 const register = async (req, res) => {
@@ -18,8 +18,7 @@ const register = async (req, res) => {
 
   const user = await User.create({ name, email, password, role });
 
-  const tokenUser = { name: user.name, userId: user._id, role: user.role };
-
+  const tokenUser = createTokenUser(user)
   attachCookiesToResponse({ res, user: tokenUser });
 
   res.status(StatusCodes.CREATED).json({ user: tokenUser });
@@ -29,7 +28,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    CustomError.BadRequestError("Please provide email or password");
+    throw new CustomError.BadRequestError("Please provide email or password");
   }
 
   const user = await User.findOne({ email });
@@ -44,7 +43,7 @@ const login = async (req, res) => {
     throw new CustomError.UnauthenticatedError("Unauthorized user");
   }
 
-  const tokenUser = { name: user.name, userId: user._id, role: user.role };
+  const tokenUser = createTokenUser(user)
 
   attachCookiesToResponse({ res: res, user: tokenUser });
   res.status(StatusCodes.OK).json({ user: tokenUser });
