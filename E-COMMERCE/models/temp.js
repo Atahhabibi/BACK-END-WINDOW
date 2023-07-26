@@ -34,3 +34,6 @@ const coll = client.db('E-COMMERCE').collection('reviews');
 const cursor = coll.aggregate(agg);
 const result = await cursor.toArray();
 await client.close();
+
+// JWT_SECRET=p8i8w8iJYBIJBAQyOMGi4g/fwvYvwyOQz9Q8P7a3JIw=
+// JWT_LIFETIME=1d
